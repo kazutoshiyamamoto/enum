@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var mySize = MensSize.M
+        mySize = .S
+        
+        var herSize:WomensSize
+        herSize = .XS
+        
+        print(mySize)
+        print(herSize)
+        
     }
     
     override func didReceiveMemoryWarning() {
