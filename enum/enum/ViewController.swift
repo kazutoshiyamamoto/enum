@@ -8,12 +8,19 @@
 
 import UIKit
 
+// パターンの種類
+enum Pattern {
+    case Monotone(_: PColor)
+    case Border(color: PColor, color2: PColor)
+    case Dots(base: PColor, dot1: PColor, dot2: PColor)
+}
 
-enum Direction: Int {
-    case forward = 1
-    case backword
-    case right
-    case left
+// パターンで使える色
+enum PColor: String {
+    case red = "赤"
+    case green = "緑"
+    case yellow = "黄"
+    case white = "白"
 }
 
 class ViewController: UIViewController {
@@ -22,16 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let muki1 = Direction.forward
-        let muki2 = Direction.backword
-        let muki3 = Direction.right
-        let muki4 = Direction.left
         
-        // Enum Valueに設定されているRaw Valueを調べる
-        print(muki1.rawValue)
-        print(muki2.rawValue)
-        print(muki3.rawValue)
-        print(muki4.rawValue)
     }
     
     override func didReceiveMemoryWarning() {
