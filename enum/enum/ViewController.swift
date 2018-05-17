@@ -8,41 +8,38 @@
 
 import UIKit
 
-enum Ticket {
-    // チケットの種類
-    case Gold, A, B
-    // タイププロパティ
-    static var name = "入場券"
+enum Signal: String {
+    case Green = "緑色"
+    case Red = "赤色"
     
-    // 席（リードオンリーの変数）
-    var area: String {
-        get {
-            switch self {
-            case .Gold:
-                return "ゴールド席"
-            case .A :
-                return "A席"
-            case .B:
-                return "B席"
-            }
-        }
+    // 値を色名(rawValue)で返す
+    var color: String {
+        return self.rawValue
     }
     
-    // 価格（リードオンリーの変数）
-    var price: Int {
-        get {
-            switch self {
-            case .Gold:
-                return 24000
-            case .A:
-                return 5000
-            case .B:
-                return 2000
-            }
+    // 説明文を返すタイプメソッド
+    static func description() -> String {
+        return "GreenまたはRedのシグナルです。"
+    }
+    
+    // 値をBoolで返す（Greenのときtrue、そうでないときはfalse）
+    func isRun() -> Bool {
+        if self == .Green {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    // GreenならRed、RedならばGreenに値を切り替える
+    mutating func turn() {
+        if self == .Green {
+            self == .Red
+        } else {
+            self = .Green
         }
     }
 }
-
 
 class ViewController: UIViewController {
     
@@ -50,16 +47,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // チケット名の変更
-        Ticket.name = "超ライブ入場券"
-        
-        // チケットを取得する
-        let ticket1 = Ticket.A
-        let ticket2 = Ticket.Gold
-        
-        // チケットの確認
-        print(Ticket.name, ticket1.area, ticket1.price)
-        print(Ticket.name, ticket2.area, ticket2.price)
     }
     
     override func didReceiveMemoryWarning() {
