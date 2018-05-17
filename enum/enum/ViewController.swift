@@ -34,7 +34,7 @@ enum Signal: String {
     // GreenならRed、RedならばGreenに値を切り替える
     mutating func turn() {
         if self == .Green {
-            self == .Red
+            self = .Red
         } else {
             self = .Green
         }
@@ -47,6 +47,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // タイプメソッドを実行する
+        let text = Signal.description()
+        print(text)
+        // 最初はGreenで開始する
+        var lamp = Signal.Green
+        print(lamp.color)
+        print(lamp.isRun())
+        print("---- 値を反転する ----")
+        lamp.turn()
+        print(lamp.color)
+        print(lamp.isRun())
     }
     
     override func didReceiveMemoryWarning() {
